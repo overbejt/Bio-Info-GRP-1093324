@@ -1,0 +1,18 @@
+body, html {
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.index-bg {
+	background-image: url(https://static1.squarespace.com/static/53475376e4b029dc12be07c5/57de1e84ff7c5017de064d75/586b3c1a440243428d8f36e6/1483422753007/20161213_K11417_117.jpg?format=1000w);
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.carosl{
+	height: 100%;
+}
+
+
