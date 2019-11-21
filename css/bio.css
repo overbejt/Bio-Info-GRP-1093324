@@ -12,12 +12,16 @@ body, html {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-.carosl{
+.carosl {
 	height: 100%;
+	/*redundant?*/
 }
-.logo{
+.logo {
 	height: 32px;
-
+	/*redundant?*/
+}
+#gene-selection {
+	width:300px; !important
 }
 
 
