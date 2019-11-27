@@ -1,4 +1,5 @@
 *.doc
 *.swp
-
+setup/*
+hisdb.py
 .DS_Store
