@@ -1,14 +1,20 @@
 use overbejt;
 
+
+
+
 drop table gene;
 drop table source;
 drop table features;
 drop table attr;
 
+
+
+
 create table source(
     source_id INT not null AUTO_INCREMENT,
     source_name varchar(255) not null,
-    PRIMARY KEY ( source_id, source_name),
+    PRIMARY KEY (source_name),
     INDEX (source_id, source_name)
 );
 create table features(
@@ -18,9 +24,9 @@ create table features(
 );
 create table attr(
     attr_id int not null AUTO_INCREMENT,
-    data varchar(255) not null,
+    data varchar(700) not null,
     PRIMARY KEY (attr_id, data),
-    INDEX (attr_id, data)
+    INDEX (data)
 );
 create table gene(
    gene_id INT NOT NULL AUTO_INCREMENT,
