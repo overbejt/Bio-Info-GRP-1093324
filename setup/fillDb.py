@@ -12,19 +12,20 @@ try:
 
     # open the file
     file = open(sys.argv[1], 'r')
+    # Iterate through the contents
     for line in file:
+        # Skip comments
         if line[0] is not '#':
+            # Clean up the line and split it into an array
             line = line.strip()
             arr = line.split('\t')
-            for a in range(len(arr)):
-                print('{0}: {1}'.format(a, arr[a]))
-    # with conn.cursor() as cursor:
-    #     # Create a new record
-    #     sql = "select * from overbejt.gene"
-    #     cursor.execute(sql)
-    #     data = cursor.fetchall()
-    #     for i in data:
-    #         print(i)
+            # Insert the source into the table eg: arr[1]
+            with conn.cursor() as cursor:
+                # Create a new record
+                sql = "insert ignore into overbejt.source(source_name) values(%s)"
+                cursor.execute(sql, arr[1])
+            conn.commit()
+            break
 
     # connection is not autocommit by default. So you must commit to save
     # your changes.

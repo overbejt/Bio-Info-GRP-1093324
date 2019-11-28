@@ -7,19 +7,19 @@ drop table attr;
 
 create table source(
     source_id INT not null AUTO_INCREMENT,
-    source_name varchar(255),
-    PRIMARY KEY ( source_id ),
+    source_name varchar(255) not null,
+    PRIMARY KEY ( source_id, source_name),
     INDEX (source_id, source_name)
 );
 create table features(
     feature_id INT not null AUTO_INCREMENT,
-    feature varchar(255),
-    PRIMARY KEY ( feature_id )
+    feature varchar(255) not null,
+    PRIMARY KEY (feature_id, feature)
 );
 create table attr(
     attr_id int not null AUTO_INCREMENT,
-    data varchar(255),
-    PRIMARY KEY ( attr_id ),
+    data varchar(255) not null,
+    PRIMARY KEY (attr_id, data),
     INDEX (attr_id, data)
 );
 create table gene(
@@ -32,7 +32,7 @@ create table gene(
    a_id int,
    f_id int,
    s_id int,
-   PRIMARY KEY ( gene_id ),
+   PRIMARY KEY (gene_id),
    foreign key (a_id) references attr(attr_id),
    foreign key (f_id) references features(feature_id),
    foreign key (s_id) references source(source_id),
