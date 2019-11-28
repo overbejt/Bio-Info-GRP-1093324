@@ -25,7 +25,19 @@ try:
                 sql = "insert ignore into overbejt.source(source_name) values(%s)"
                 cursor.execute(sql, arr[1])
             conn.commit()
-            break
+            # Insert the feature into the database eg: arr[2]
+            with conn.cursor() as cursor:
+                # Create a new feature entry
+                sql = "insert ignore into overbejt.features(feature) values(%s)"
+                cursor.execute(sql, arr[2])
+            conn.commit()
+            # Insert the attributes into the database eg: arr[8]
+            with conn.cursor() as cursor:
+                # Create a new attributes entry
+                sql = "insert ignore into overbejt.attr(data) values(%s)"
+                cursor.execute(sql, arr[8])
+            conn.commit()
+            # Todo: Fill in the gene table
 
     # connection is not autocommit by default. So you must commit to save
     # your changes.
