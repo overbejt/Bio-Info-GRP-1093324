@@ -14,7 +14,10 @@ try:
     file = open(sys.argv[1], 'r')
     for line in file:
         if line[0] is not '#':
-            print(line)
+            line = line.strip()
+            arr = line.split('\t')
+            for a in range(len(arr)):
+                print('{0}: {1}'.format(a, arr[a]))
     # with conn.cursor() as cursor:
     #     # Create a new record
     #     sql = "select * from overbejt.gene"
