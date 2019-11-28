@@ -13,6 +13,9 @@ try:
         # Create a new record
         sql = "select * from overbejt.gene"
         cursor.execute(sql)
+        data = cursor.fetchall()
+        for i in data:
+            print(i)
 
     # connection is not autocommit by default. So you must commit to save
     # your changes.
