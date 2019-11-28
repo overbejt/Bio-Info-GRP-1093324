@@ -9,13 +9,19 @@ conn = pymysql.connect(host='localhost',
                        password='',
                        cursorclass=pymysql.cursors.DictCursor)
 try:
-    with conn.cursor() as cursor:
-        # Create a new record
-        sql = "select * from overbejt.gene"
-        cursor.execute(sql)
-        data = cursor.fetchall()
-        for i in data:
-            print(i)
+
+    # open the file
+    file = open(sys.argv[1], 'r')
+    for line in file:
+        if line[0] is not '#':
+            print(line)
+    # with conn.cursor() as cursor:
+    #     # Create a new record
+    #     sql = "select * from overbejt.gene"
+    #     cursor.execute(sql)
+    #     data = cursor.fetchall()
+    #     for i in data:
+    #         print(i)
 
     # connection is not autocommit by default. So you must commit to save
     # your changes.
