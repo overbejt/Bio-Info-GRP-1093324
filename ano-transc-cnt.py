@@ -1,5 +1,6 @@
-#!/usr/bin/env python3iport cgi
-import citb
+#!/usr/bin/env python3
+import cgi
+import cgitb
 cgitb.enable()
 print('Content-Type: text/html')
 print('')
