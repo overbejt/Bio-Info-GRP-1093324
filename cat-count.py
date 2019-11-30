@@ -1,6 +1,28 @@
 #!/usr/bin/env python3
+import pymysql.cursors
+import pymysql
 import cgi, cgitb
 cgitb.enable()
+
+conn = pymysql.connect(host='localhost',
+                       user='overbejt',
+                       password='bio466',
+                       cursorclass=pymysql.cursors.DictCursor)
+try:
+    # Get all of the gene categories
+    with conn.cursor() as cursor:
+        # Check if it already exists
+        sql = "select source_name from overbejt.source where source_name= % s"
+        cursor.execute(sql, arr[1])
+        res = cursor.fetchall()
+        if len(res) < 1:
+            # Create a new record
+            sql = "insert into overbejt.source(source_name) values(%s)"
+            cursor.execute(sql, arr[1])
+        conn.commit()
+finally:
+    conn.close()
+# HTML statements
 print('Content-Type: text/html')
 print('')
 print('<!DOCTYPE html>')
@@ -55,7 +77,7 @@ print('<div class="row"><!-- header row -->')
 print('<h1>Gene Catagories<br></h1>')
 print('</div><!-- end of the header row -->')
 print('<div class="row">')
-print('<p><br>These are the list of diferent genes and their count.</p>')
+print('<p><br>These are the list of different genes and their count.</p>')
 print('</div>')
 print('<div class="row pt-5"><!-- ENSMBL 82 table row -->')
 print('<h2>ENSEMBL 82</h2>')
