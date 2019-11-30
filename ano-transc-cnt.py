@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
-import cgi
-import cgitb
+#/usr/bin/env python3iport cgi
+impor citb
 cgitb.enable()
 print('Content-Type: text/html')
 print('')
@@ -43,13 +42,13 @@ print('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="bu
 print('Other pages <span class="sr-only">(current)</span></a>')
 print('<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">')
 print('<a class="dropdown-item" href="cat-count.py">Categories of Genes</a>')
-print('<a class = "dropdown-item" href = "ano-transc-cnt.py" > Annotated Transcripts < /a >')
-print('<a class = "dropdown-item" href = "gene-cat-trans.py" > Transcripts by Gene Category < /a >')
-print('<a class = "dropdown-item" href = "min-max.py" > Min / max of Transcripts per Gene < /a >')
+print('<a class="dropdown-item" href="ano-transc-cnt.py"> Annotated Transcripts </a>')
+print('<a class="dropdown-item" href="gene-cat-trans.py"> Transcripts by Gene Category </a>')
+print('<a class="dropdown-item" href="min-max.py" > Min/max of Transcripts per Gene </a>')
 print('<!-- NOT YET - ->')
 print('<!-- < a class = "dropdown-item" href = "gene-annotation.html" > Annotations < /a > -->')
-print('<a class = "dropdown-item" href = "gt98.py" > Genes and Transcripts - - ENSMBL 98 Only < /a >')
-print('<a class = "dropdown-item" href = "gt82.py" > Genes and Transcripts - - ENSMBL 82 Only < /a >')
+print('<a class="dropdown-item" href="gt98.py"> Genes and Transcripts -- ENSMBL 98 Only </a>')
+print('<a class="dropdown-item" href="gt82.py"> Genes and Transcripts -- ENSMBL 82 Only </a>')
 print('</div>')
 print('</li>')
 print('</ul>')
