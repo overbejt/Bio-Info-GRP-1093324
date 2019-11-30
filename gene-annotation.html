@@ -47,18 +47,26 @@
     <div class="container">
       <div class="h-100 row align-items-center justify-content-center">
         <div class="col-auto pt-5">
+          <h1>ENSEMLB Comparator</h1>
+          <p>This website givese the gene annotation differences for mouse genome between ENSEMBL release 82 and ENSEMBL release 94. </p>
           <form id="gs-form" action="scripts/find-gene.py"><!-- gene selection form -->
             <div class="form-row align-items-center">
-              <div class="col-auto">
+              <div class="col-lg-8 col-md-8 col-sm-12">
                   <select class="custom-select mr-sm-2" id="gene-selection">
                   <option selected>Choose...</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="1">How many different categories of genes and their numbers</option>
+                  <option value="2">How many transcripts are annotated?</option>
+                  <option value="3">What are the associated transcript numbers for each gene category?</option>
+                  <option value="4">What are the maximum/minimum numbers of different transcripts annotated for a single gene?</option>
+                  <option value="5">Differences beteen the two releases.</option>
+                  <option value="6">What are the genes and transcripts annotated in the 98 release not in the 82 release?</option>
+                  <option value="7">What are genes and transcripts annotated in the 82 release not in the 92 release?</option>
                 </select>
               </div>
-              <div class="col-auto">
-                <button type="submit" class="btn btn-primary">Submit</button>
+              <div class="form-row">
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
               </div>
             </div>
           </form>
