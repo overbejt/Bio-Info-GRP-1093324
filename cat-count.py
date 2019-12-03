@@ -88,7 +88,7 @@ try:
     # Get all of the gene categories
     with conn.cursor() as cursor:
         # Get all of the genes from the attributes table
-        sql = "select * from overbejt.attr where data like '\%gene_biotype%'"
+        sql = "select * from overbejt.attr where contains (data, 'gene_biotype')"
         args = '%' + 'gene_biotype' + '%'
         cursor.execute(sql)
         res = cursor.fetchall()
