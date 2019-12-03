@@ -88,7 +88,7 @@ try:
     # Get all of the gene categories
     with conn.cursor() as cursor:
         # Check if it already exists
-        sql = "select * from overbejt.gene"
+        sql = "select * from overbejt.source"
         cursor.execute(sql)
         res = cursor.fetchall()
         print(res)
