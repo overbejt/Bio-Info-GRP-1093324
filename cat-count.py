@@ -87,8 +87,8 @@ print('<tbody>')
 try:
     # Get all of the gene categories
     with conn.cursor() as cursor:
-        # Check if it already exists
-        sql = "select * from overbejt.source"
+        # Get all of the genes from the attributes table
+        sql = "select * from overbejt.attr where data like '%gene_biotype%'"
         cursor.execute(sql)
         res = cursor.fetchall()
         print(res)
