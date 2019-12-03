@@ -93,7 +93,7 @@ try:
         # cursor.execute(sql)
         cursor.execute('select * from overbejt.attr where data like %s', ('%' + 'gene_biotype' + '%',))
         res = cursor.fetchall()
-        print(res)
+        # print(res)
 finally:
     conn.close()
 print('<tr>')
