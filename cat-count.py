@@ -9,20 +9,6 @@ conn = pymysql.connect(host='localhost',
                        user='overbejt',
                        password='bio466',
                        cursorclass=pymysql.cursors.DictCursor)
-try:
-    # Get all of the gene categories
-    with conn.cursor() as cursor:
-        # Check if it already exists
-        sql = "select source_name from overbejt.source where source_name= % s"
-        cursor.execute(sql, arr[1])
-        res = cursor.fetchall()
-        if len(res) < 1:
-            # Create a new record
-            sql = "insert into overbejt.source(source_name) values(%s)"
-            cursor.execute(sql, arr[1])
-        conn.commit()
-finally:
-    conn.close()
 # HTML statements
 print('Content-Type: text/html')
 print('')
@@ -98,6 +84,16 @@ print('<th scope="col">Count</th>')
 print('</tr>')
 print('</thead>')
 print('<tbody>')
+try:
+    # Get all of the gene categories
+    with conn.cursor() as cursor:
+        # Check if it already exists
+        sql = "select * from overbejt.gene"
+        cursor.execute(sql)
+        res = cursor.fetchall()
+        print(res)
+finally:
+    conn.close()
 print('<tr>')
 print('<th scope="row">1</th>')
 print('<td>Mark</td>')
