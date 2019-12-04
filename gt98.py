@@ -85,7 +85,7 @@ print('<tbody>')
 try:
     # Get all of the genes and transcripts
     with conn.cursor() as cursor:
-        cursor.execute('SELECT DISTINCT GENE_ID, TRANSCRIPT_NAME from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="gene" OR FEATURE="transcript"')
+        cursor.execute('SELECT DISTINCT GENE_ID from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="gene"')
         res = cursor.fetchall()
         print(res)
         # Loop and print the table
@@ -124,6 +124,23 @@ print('<th scope="col">Transcript</th>')
 print('</tr>')
 print('</thead>')
 print('<tbody>')
+try:
+    # Get all of the genes and transcripts
+    with conn.cursor() as cursor:
+        cursor.execute('SELECT DISTINCT TRANSCRIPT_NAME from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="transcript"')
+        res = cursor.fetchall()
+        print(res)
+        # Loop and print the table
+        row_cnt = 1
+        # for row in res:
+        #     print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+        #     print('<td>{0}</td>'.format(row['GENE_BIOTYPE']))
+        #     print('<td>{0}</td>'.format(row['count']))
+        #     print('</tr>')
+        #     row_cnt += 1
+
+finally:
+    conn.close()
 print('<tr>')
 print('<th scope="row">1</th>')
 print('<td>Mark</td>')
