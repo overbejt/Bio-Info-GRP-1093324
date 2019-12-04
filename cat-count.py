@@ -93,8 +93,10 @@ try:
         row_cnt = 1
         for row in res:
             print('<tr><th scope="row">{0}</th>'.format(row_cnt))
-            for val in row.values():
-                print('<td>{0}</td>'.format(val))
+            # for val in row.values():
+            #     print('<td>{0}</td>'.format(val))
+            print('<td>{0}</td>'.format(row['GENE_BIOTYPE']))
+            print('<td>{0}</td>'.format(row['count']))
             print('</tr>')
             row_cnt += 1
 
