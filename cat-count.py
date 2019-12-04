@@ -93,7 +93,7 @@ try:
         # cursor.execute(sql)
         cursor.execute('select distinct GENE_BIOTYPE from overbejt.geneII')
         res = cursor.fetchall()
-        # print(res)
+        print(res)
 finally:
     conn.close()
 print('<tr>')
