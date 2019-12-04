@@ -87,15 +87,17 @@ print('<tbody>')
 try:
     # Get all of the gene categories and their count
     with conn.cursor() as cursor:
-        cursor.execute('select distinct GENE_BIOTYPE from overbejt.geneII')
+        # cursor.execute('select distinct GENE_BIOTYPE from overbejt.geneII')
+        cursor.execute('SELECT GENE_BIOTYPE,COUNT(*) as count FROM geneII GROUP BY GENE_BIOTYPE ORDER BY count DESC')
         res = cursor.fetchall()
-        row_cnt = 1
-        for row in res:
-            for val in row.values():
-                print('<tr><th scope="row">{0}</th>'.format(row_cnt))
-                print('<td>{0}</td>'.format(val))
-                print('<td>{0}</td></tr>'.format('something'))
-            row_cnt += 1
+        print(res)
+        # row_cnt = 1
+        # for row in res:
+        #     for val in row.values():
+        #         print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+        #         print('<td>{0}</td>'.format(val))
+        #         print('<td>{0}</td></tr>'.format('something'))
+        #     row_cnt += 1
 
 finally:
     conn.close()
