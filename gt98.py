@@ -87,7 +87,6 @@ try:
     with conn.cursor() as cursor:
         cursor.execute('SELECT DISTINCT GENE_ID from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="gene"')
         res = cursor.fetchall()
-        print(res)
         # Loop and print the table
         row_cnt = 1
         for row in res:
