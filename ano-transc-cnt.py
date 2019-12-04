@@ -72,6 +72,7 @@ print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
 print('<h1>Count of Transcripts that are Annotated</h1>')
 # Get the Total Count of transcripts
+print('<p>')
 try:
     # Get all of the gene categories and their count
     with conn.cursor() as cursor:
@@ -79,22 +80,24 @@ try:
         cursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript"')
         res = cursor.fetchone()
         trans_cnt = res['COUNT(FEATURE)']
-        print('<p>This is a list of the transcripts that are annotated. There are {0} transcripts total.</p>'.format(trans_cnt))
+        print('This is a list of the transcripts that are annotated. There are {0} transcripts total.'.format(trans_cnt))
 
         # Get the count of transcripts from the 82 version
         cursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript" AND ENSMBLE_VERSION=82')
         res = cursor.fetchone()
         trans_cnt = res['COUNT(FEATURE)']
-        print('<p>This is a list of the transcripts that are annotated. There are {0} transcripts ENSEMBL version 82.</p>'.format(trans_cnt))
+        print('<br>This is a list of the transcripts that are annotated. There are {0} transcripts ENSEMBL version 82.'.format(trans_cnt))
 
         # Get the count of transcripts from the 98 version
         cursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript" AND ENSMBLE_VERSION=98')
         res = cursor.fetchone()
         trans_cnt = res['COUNT(FEATURE)']
-        print('<p>This is a list of the transcripts that are annotated. There are {0} transcripts in the ENSEMBL version 98.</p>'.format(trans_cnt))
+        print('<br>This is a list of the transcripts that are annotated. There are {0} transcripts in the ENSEMBL version 98.'.format(trans_cnt))
 
 finally:
     conn.close()
+
+print('</p>')
 print('</div><!-- end of the header row -->')
 print('<div class="row pt-5"><!-- ENSMBL 82 table row -->')
 print('<h2>ENSEMBL 82</h2>')
