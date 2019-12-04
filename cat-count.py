@@ -97,7 +97,7 @@ try:
         #     print(res)    #  Doesn't like this
         for row in res:
             for val in res.values():
-                print('{0}{1}'.format(val., '\n'))
+                print('{0}{1}'.format(val, '\n'))
                 print('line break----')
 finally:
     conn.close()
