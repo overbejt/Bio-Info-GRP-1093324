@@ -95,8 +95,8 @@ try:
         # res = cursor.fetchall()
         while (res=cursor.fetch()):
             print(res)
-        for val in res:
-            print(val)
+        # for val in res:
+        #     print(val)
 finally:
     conn.close()
 print('<tr>')
