@@ -1,7 +1,17 @@
 #!/usr/bin/env python3
+import pymysql.cursors
+import pymysql
 import cgi
 import cgitb
 cgitb.enable()
+
+# Connect to the database
+conn = pymysql.connect(host='localhost',
+                       user='overbejt',
+                       password='bio466',
+                       cursorclass=pymysql.cursors.DictCursor)
+
+# Print the HTML out
 print('Content-Type: text/html')
 print('')
 print('<!DOCTYPE html>')
@@ -72,6 +82,23 @@ print('<th scope="col">Gene</th>')
 print('</tr>')
 print('</thead>')
 print('<tbody>')
+try:
+    # Get all of the genes and transcripts
+    with conn.cursor() as cursor:
+        cursor.execute('SELECT GENE_BIOTYPE from overbejt.geneII WHERE ENSMBLE_VERSION="98" AND GENE_BIOTYPE="gene"')
+        res = cursor.fetchall()
+        print(res)
+        # Loop and print the table
+        row_cnt = 1
+        # for row in res:
+        #     print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+        #     print('<td>{0}</td>'.format(row['GENE_BIOTYPE']))
+        #     print('<td>{0}</td>'.format(row['count']))
+        #     print('</tr>')
+        #     row_cnt += 1
+
+finally:
+    conn.close()
 print('<tr>')
 print('<th scope="row">1</th>')
 print('<td>Mark</td>')
