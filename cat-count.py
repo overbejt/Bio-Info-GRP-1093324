@@ -88,9 +88,9 @@ try:
     # Get all of the gene categories and their count
     with conn.cursor() as cursor:
         # cursor.execute('select distinct GENE_BIOTYPE from overbejt.geneII')
-        cursor.execute('SELECT GENE_BIOTYPE, COUNT(*) as count FROM overbejt.geneII GROUP BY GENE_BIOTYPE ORDER BY count DESC')
+        cursor.execute('SELECT COUNT(*) as count, GENE_BIOTYPE FROM overbejt.geneII GROUP BY GENE_BIOTYPE ORDER BY count DESC')
         res = cursor.fetchall()
-        print(res)
+        # print(res)
         row_cnt = 1
         for row in res:
             print('<tr><th scope="row">{0}</th>'.format(row_cnt))
