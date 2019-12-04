@@ -91,13 +91,14 @@ try:
         cursor.execute('SELECT GENE_BIOTYPE, COUNT(*) as count FROM overbejt.geneII GROUP BY GENE_BIOTYPE ORDER BY count DESC')
         res = cursor.fetchall()
         print(res)
-        # row_cnt = 1
-        # for row in res:
-        #     for val in row.values():
-        #         print('<tr><th scope="row">{0}</th>'.format(row_cnt))
-        #         print('<td>{0}</td>'.format(val))
-        #         print('<td>{0}</td></tr>'.format('something'))
-        #     row_cnt += 1
+        row_cnt = 1
+        for row in res:
+            print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+            for val in row.values():
+                print('<td>{0}</td>'.format(val))
+                # print('<td>{0}</td>'.format('something'))
+            print('</tr>')
+            row_cnt += 1
 
 finally:
     conn.close()
