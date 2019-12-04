@@ -86,13 +86,13 @@ try:
         cursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript" AND ENSMBLE_VERSION=82')
         res = cursor.fetchone()
         trans_cnt = res['COUNT(FEATURE)']
-        print('<br>This is a list of the transcripts that are annotated. There are {0} transcripts ENSEMBL version 82.'.format(trans_cnt))
+        print('<br>There are {0} transcripts ENSEMBL version 82.'.format(trans_cnt))
 
         # Get the count of transcripts from the 98 version
         cursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript" AND ENSMBLE_VERSION=98')
         res = cursor.fetchone()
         trans_cnt = res['COUNT(FEATURE)']
-        print('<br>This is a list of the transcripts that are annotated. There are {0} transcripts in the ENSEMBL version 98.'.format(trans_cnt))
+        print('<br>And there are {0} transcripts in the ENSEMBL version 98.'.format(trans_cnt))
 
 finally:
     conn.close()
