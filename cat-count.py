@@ -99,7 +99,7 @@ try:
                 print('<tr><th scope="row">{0}</th>'.format(row_cnt))
                 print('<td>{0}</td>'.format(val))
                 print('<td>{0}</td></tr>'.format('something'))
-                row_cnt += 1
+            row_cnt += 1
 
 finally:
     conn.close()
