@@ -91,7 +91,7 @@ try:
         # sql = "select * from overbejt.attr where contains (data, 'gene_biotype')"
         # args = '%' + 'gene_biotype' + '%'
         # cursor.execute(sql)
-        cursor.execute('select * from overbejt.attr where data like %s', ('%' + 'gene_biotype' + '%',))
+        cursor.execute('select distinct GENE_BIOTYPE from overbejt.geneII')
         res = cursor.fetchall()
         # print(res)
 finally:
