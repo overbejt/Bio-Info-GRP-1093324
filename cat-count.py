@@ -96,7 +96,7 @@ try:
         # while (res=cursor.fetch()):
         #     print(res)    #  Doesn't like this
         for val in res:
-            print(val, '\n')
+            print('{0}{1}'.format(val, '\n'))
 finally:
     conn.close()
 print('<tr>')
