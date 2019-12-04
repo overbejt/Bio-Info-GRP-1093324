@@ -77,8 +77,9 @@ try:
     with conn.cursor() as cursor:
         cursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript"')
         res = cursor.fetchall()
+        trans_cnt = res[0].value()
         print(res)
-        print('<p>This is a list of the transcripts that are annotated. There are {0} transcripts total.</p>'.format('something'))
+        print('<p>This is a list of the transcripts that are annotated. There are {0} transcripts total.</p>'.format(trans_cnt))
 
 finally:
     conn.close()
