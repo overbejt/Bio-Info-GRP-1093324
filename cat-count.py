@@ -95,9 +95,10 @@ try:
         res = cursor.fetchall()
         # while (res=cursor.fetch()):
         #     print(res)    #  Doesn't like this
-        for val in res.values():
-            print('{0}{1}'.format(val, '\n'))
-            print('line break----')
+        for row in res:
+            for val in res.values():
+                print('{0}{1}'.format(val., '\n'))
+                print('line break----')
 finally:
     conn.close()
 print('<tr>')
