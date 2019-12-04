@@ -90,15 +90,15 @@ try:
         print(res)
         # Loop and print the table
         row_cnt = 1
-        # for row in res:
-        #     print('<tr><th scope="row">{0}</th>'.format(row_cnt))
-        #     print('<td>{0}</td>'.format(row['GENE_BIOTYPE']))
-        #     print('<td>{0}</td>'.format(row['count']))
-        #     print('</tr>')
-        #     row_cnt += 1
+        for row in res:
+            print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+            print('<td>{0}</td>'.format(row['GENE_ID']))
+            print('</tr>')
+            row_cnt += 1
 
 finally:
-    conn.close()
+    print()
+#     conn.close()
 print('<tr>')
 print('<th scope="row">1</th>')
 print('<td>Mark</td>')
@@ -129,15 +129,13 @@ try:
     with conn.cursor() as cursor:
         cursor.execute('SELECT DISTINCT TRANSCRIPT_NAME from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="transcript"')
         res = cursor.fetchall()
-        print(res)
         # Loop and print the table
         row_cnt = 1
-        # for row in res:
-        #     print('<tr><th scope="row">{0}</th>'.format(row_cnt))
-        #     print('<td>{0}</td>'.format(row['GENE_BIOTYPE']))
-        #     print('<td>{0}</td>'.format(row['count']))
-        #     print('</tr>')
-        #     row_cnt += 1
+        for row in res:
+            print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+            print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
+            print('</tr>')
+            row_cnt += 1
 
 finally:
     conn.close()
