@@ -96,9 +96,12 @@ try:
         # while (res=cursor.fetch()):
         #     print(res)    #  Doesn't like this
         for row in res:
+            row_cnt = 0
             for val in row.values():
-                print('{0}{1}'.format(val, '\n'))
-                print('line break----')
+                print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+                print('<td>{0}</td>'.format(val))
+                print('<td>{0}</td></tr>'.format('something'))
+
 finally:
     conn.close()
 print('<tr>')
