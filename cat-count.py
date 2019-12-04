@@ -85,16 +85,12 @@ print('</tr>')
 print('</thead>')
 print('<tbody>')
 try:
-    # Get all of the gene categories
+    # Get all of the gene categories and their count
     with conn.cursor() as cursor:
-        # Get all of the genes from the attributes table
-        # sql = "select * from overbejt.attr where contains (data, 'gene_biotype')"
-        # args = '%' + 'gene_biotype' + '%'
-        # cursor.execute(sql)
         cursor.execute('select distinct GENE_BIOTYPE from overbejt.geneII')
         res = cursor.fetchall()
+        row_cnt = 1
         for row in res:
-            row_cnt = 1
             for val in row.values():
                 print('<tr><th scope="row">{0}</th>'.format(row_cnt))
                 print('<td>{0}</td>'.format(val))
