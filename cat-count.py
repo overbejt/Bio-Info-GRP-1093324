@@ -94,7 +94,7 @@ try:
         cursor.execute('select distinct GENE_BIOTYPE from overbejt.geneII')
         res = cursor.fetchall()
         for row in res:
-            row_cnt = 0
+            row_cnt = 1
             for val in row.values():
                 print('<tr><th scope="row">{0}</th>'.format(row_cnt))
                 print('<td>{0}</td>'.format(val))
