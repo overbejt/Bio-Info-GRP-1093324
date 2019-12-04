@@ -93,14 +93,13 @@ try:
         # cursor.execute(sql)
         cursor.execute('select distinct GENE_BIOTYPE from overbejt.geneII')
         res = cursor.fetchall()
-        # while (res=cursor.fetch()):
-        #     print(res)    #  Doesn't like this
         for row in res:
             row_cnt = 0
             for val in row.values():
                 print('<tr><th scope="row">{0}</th>'.format(row_cnt))
                 print('<td>{0}</td>'.format(val))
                 print('<td>{0}</td></tr>'.format('something'))
+                row_cnt += 1
 
 finally:
     conn.close()
