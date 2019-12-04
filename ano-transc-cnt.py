@@ -72,6 +72,9 @@ print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
 print('<h1>Count of Transcripts that are Annotated</h1>')
 # Get the Total Count of transcripts
+ensembl98 = ''
+ensembl82 = ''
+total = ''
 print('<p>')
 try:
     # Get all of the gene categories and their count
@@ -79,51 +82,51 @@ try:
         # Get the total count
         cursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript"')
         res = cursor.fetchone()
-        trans_cnt = res['COUNT(FEATURE)']
-        print('This is a list of the transcripts that are annotated. There are {0} transcripts total.'.format(trans_cnt))
+        total = res['COUNT(FEATURE)']
+        # print('This is a list of the transcripts that are annotated. There are {0} transcripts total.'.format(trans_cnt))
 
         # Get the count of transcripts from the 82 version
         cursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript" AND ENSMBLE_VERSION=82')
         res = cursor.fetchone()
-        trans_cnt = res['COUNT(FEATURE)']
-        print('<br>There are {0} transcripts ENSEMBL version 82.'.format(trans_cnt))
+        ensembl82 = res['COUNT(FEATURE)']
+        # print('<br>There are {0} transcripts ENSEMBL version 82.'.format(trans_cnt))
 
         # Get the count of transcripts from the 98 version
         cursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript" AND ENSMBLE_VERSION=98')
         res = cursor.fetchone()
-        trans_cnt = res['COUNT(FEATURE)']
-        print('<br>And there are {0} transcripts in the ENSEMBL version 98.'.format(trans_cnt))
+        ensembl98 = res['COUNT(FEATURE)']
+        # print('<br>And there are {0} transcripts in the ENSEMBL version 98.'.format(trans_cnt))
 
 finally:
     conn.close()
 
 print('</p>')
 print('</div><!-- end of the header row -->')
-print('<div class="row pt-5"><!-- ENSMBL 82 table row -->')
-print('<h2>ENSEMBL 82</h2>')
+print('<div class="row pt-5">')
+# print('<h2>ENSEMBL 82</h2>')
 print('<table class="table table-striped">')
 print('<thead class="bg-danger">')
 print('<tr>')
-print('<th scope="col">Row</th>')
-print('<th scope="col">Transcript</th>')
+print('<th scope="col">ENSEMBL Version</th>')
 print('<th scope="col">Count</th>')
+# print('<th scope="col">Count</th>')
 print('</tr>')
 print('</thead>')
 print('<tbody>')
 print('<tr>')
-print('<th scope="row">1</th>')
-print('<td>Mark</td>')
-print('<td>Otto</td>')
+print('<th scope="row">ENSEMBL 98</th>')
+print('<td>{0}</td>'.format(ensembl98))
+# print('<td>Otto</td>')
 print('</tr>')
 print('<tr>')
-print('<th scope="row">2</th>')
-print('<td>Jacob</td>')
-print('<td>Thornton</td>')
+print('<th scope="row">ENSEMBL 82</th>')
+print('<td>{0}</td>'.format(ensembl82))
+# print('<td>Thornton</td>')
 print('</tr>')
 print('<tr>')
-print('<th scope="row">3</th>')
-print('<td>Larry</td>')
-print('<td>the Bird</td>')
+print('<th scope="row">Total</th>')
+print('<td>{0}</td>'.format(total))
+# print('<td>the Bird</td>')
 print('</tr>')
 print('</tbody>')
 print('</table>')
