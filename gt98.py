@@ -85,7 +85,7 @@ print('<tbody>')
 try:
     # Get all of the genes and transcripts
     with conn.cursor() as cursor:
-        cursor.execute('SELECT GENE_BIOTYPE from overbejt.geneII WHERE ENSMBLE_VERSION="98" AND GENE_BIOTYPE="gene"')
+        cursor.execute('SELECT DISTINCT GENE_ID, TRANSCRIPT_NAME from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="gene" OR FEATURE="transcript"')
         res = cursor.fetchall()
         print(res)
         # Loop and print the table
