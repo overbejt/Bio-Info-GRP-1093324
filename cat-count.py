@@ -97,6 +97,7 @@ try:
         #     print(res)    #  Doesn't like this
         for val in res:
             print('{0}{1}'.format(val, '\n'))
+            print('line break----')
 finally:
     conn.close()
 print('<tr>')
