@@ -75,11 +75,23 @@ print('<h1>Count of Transcripts that are Annotated</h1>')
 try:
     # Get all of the gene categories and their count
     with conn.cursor() as cursor:
+        # Get the total count
         cursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript"')
         res = cursor.fetchone()
-        print(res)
         trans_cnt = res['COUNT(FEATURE)']
         print('<p>This is a list of the transcripts that are annotated. There are {0} transcripts total.</p>'.format(trans_cnt))
+
+        # Get the count of transcripts from the 82 version
+        ursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript" AND ENSMBLE_VERSION=82')
+        res = cursor.fetchone()
+        trans_cnt = res['COUNT(FEATURE)']
+        print('<p>This is a list of the transcripts that are annotated. There are {0} transcripts ENSEMBL version 82.</p>'.format(trans_cnt))
+
+        # Get the count of transcripts from the 98 version
+        ursor.execute('SELECT COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript" AND ENSMBLE_VERSION=98')
+        res = cursor.fetchone()
+        trans_cnt = res['COUNT(FEATURE)']
+        print('<p>This is a list of the transcripts that are annotated. There are {0} transcripts in the ENSEMBL version 98.</p>'.format(trans_cnt))
 
 finally:
     conn.close()
