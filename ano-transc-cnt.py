@@ -1,7 +1,17 @@
 #!/usr/bin/env python3
+import pymysql.cursors
+import pymysql
 import cgi
 import cgitb
 cgitb.enable()
+
+# Connect to the database
+conn = pymysql.connect(host='localhost',
+                       user='overbejt',
+                       password='bio466',
+                       cursorclass=pymysql.cursors.DictCursor)
+
+# Print out allllllll of the html
 print('Content-Type: text/html')
 print('')
 print('<!DOCTYPE html>')
@@ -61,7 +71,17 @@ print('<div class="h-100 row align-items-center justify-content-center">')
 print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
 print('<h1>Count of Transcripts that are Annotated</h1>')
-print('<p>This is a list of the transcripts that are annotated. There are [2334] transcripts total.</p>')
+# Get the Total Count of transcripts
+try:
+    # Get all of the gene categories and their count
+    with conn.cursor() as cursor:
+        cursor.execute('SELECT FEATURE, COUNT(FEATURE) FROM overbejt.geneII WHERE FEATURE="transcript"')
+        res = cursor.fetchall()
+        print(res)
+        print('<p>This is a list of the transcripts that are annotated. There are {0} transcripts total.</p>'.format('something'))
+
+finally:
+    conn.close()
 print('</div><!-- end of the header row -->')
 print('<div class="row pt-5"><!-- ENSMBL 82 table row -->')
 print('<h2>ENSEMBL 82</h2>')
