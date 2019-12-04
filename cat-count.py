@@ -5,6 +5,7 @@ import cgi
 import cgitb
 cgitb.enable()
 
+# Connect to the database
 conn = pymysql.connect(host='localhost',
                        user='overbejt',
                        password='bio466',
@@ -74,7 +75,6 @@ print('<div class="row">')
 print('<p><br>These are the list of different genes and their count.</p>')
 print('</div>')
 print('<div class="row pt-5"><!-- ENSMBL 82 table row -->')
-# print('<h2>ENSEMBL 82</h2>')
 print('<table class="table table-striped">')
 print('<thead class="bg-danger">')
 print('<tr>')
@@ -87,69 +87,22 @@ print('<tbody>')
 try:
     # Get all of the gene categories and their count
     with conn.cursor() as cursor:
-        # cursor.execute('select distinct GENE_BIOTYPE from overbejt.geneII')
         cursor.execute('SELECT COUNT(*) as count, GENE_BIOTYPE FROM overbejt.geneII GROUP BY GENE_BIOTYPE ORDER BY count DESC')
         res = cursor.fetchall()
-        # print(res)
+        # Loop and print the table
         row_cnt = 1
         for row in res:
             print('<tr><th scope="row">{0}</th>'.format(row_cnt))
             for val in row.values():
                 print('<td>{0}</td>'.format(val))
-                # print('<td>{0}</td>'.format('something'))
             print('</tr>')
             row_cnt += 1
 
 finally:
     conn.close()
-# print('<tr>')
-# print('<th scope="row">1</th>')
-# print('<td>Mark</td>')
-# print('<td>Otto</td>')
-# print('</tr>')
-# print('<tr>')
-# print('<th scope="row">2</th>')
-# print('<td>Jacob</td>')
-# print('<td>Thornton</td>')
-# print('</tr>')
-# print('<tr>')
-# print('<th scope="row">3</th>')
-# print('<td>Larry</td>')
-# print('<td>the Bird</td>')
-# print('</tr>')
 print('</tbody>')
 print('</table>')
 print('</div><!-- end of the ENSMBL 82 table row -->')
-# print('<div class="row pt-5"><!-- ENSMBL 94 table row -->')
-# print('<h2>ENSEMBL 94</h2>')
-# print('<table class="table table-striped">')
-# print('<thead class="bg-danger">')
-# print('<tr>')
-# print('<th scope="col">Row</th>')
-# print('<th scope="col">Gene Category</th>')
-# print('<th scope="col">Count</th>')
-# print('</tr>')
-# print('</thead>')
-# print('<tbody>')
-# print('<tr>')
-# print('<th scope="row">1</th>')
-# print('<td>Mark</td>')
-# print('<td>Otto</td>')
-# print('</tr>')
-# print('<tr>')
-# print('<th scope="row">2</th>')
-# print('<td>Jacob</td>')
-# print('<td>Thornton</td>')
-# print('</tr>')
-# print('<tr>')
-# print('<th scope="row">3</th>')
-# print('<td>Larry</td>')
-# print('<td>the Bird</td>')
-# print('</tr>')
-# print('</tbody>')
-# print('</table>')
-# print('</div><!-- end of the ENSMBL 94 table row -->')
-# print('</div><!-- end of container col -->')
 print('</div><!-- end of container row -->')
 print('</div><!-- end of the main container -->')
 print('')
