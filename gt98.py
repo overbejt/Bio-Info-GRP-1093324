@@ -130,7 +130,6 @@ try:
     with conn.cursor() as cursor:
         cursor.execute('SELECT DISTINCT TRANSCRIPT_NAME from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="transcript"')
         res = cursor.fetchall()
-        print(res)
         # Loop and print the table
         row_cnt = 1
         for row in res:
