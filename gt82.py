@@ -1,7 +1,17 @@
 #!/usr/bin/env python3
+import pymysql.cursors
+import pymysql
 import cgi
 import cgitb
 cgitb.enable()
+
+# Connect to the database
+conn = pymysql.connect(host='localhost',
+                       user='overbejt',
+                       password='bio466',
+                       cursorclass=pymysql.cursors.DictCursor)
+
+# Print the HTML out
 print('Content-Type: text/html')
 print('')
 print('<!DOCTYPE html>')
@@ -39,12 +49,13 @@ print('<li class="nav-item">')
 print('<a class="nav-link active" href="about.html">About</a>')
 print('</li>')
 print('<li class="nav-item dropdown">')
-print('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Other pages <span class="sr-only">(current)</span></a>')
+print('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">')
+print('Other pages <span class="sr-only">(current)</span></a>')
 print('<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">')
 print('<a class="dropdown-item" href="cat-count.py">Categories of Genes</a>')
 print('<a class="dropdown-item" href="ano-transc-cnt.py"> Annotated Transcripts </a>')
 print('<a class="dropdown-item" href="gene-cat-trans.py"> Transcripts by Gene Category </a>')
-print('<a class="dropdown-item" href="min-max.py"> Min/max of Transcripts per Gene </a>')
+print('<a class="dropdown-item" href="min-max.py" > Min/max of Transcripts per Gene </a>')
 print('<!-- NOT YET - ->')
 print('<!-- < a class = "dropdown-item" href = "gene-annotation.html" > Annotations < /a > -->')
 print('<a class="dropdown-item" href="gt98.py"> Genes and Transcripts -- ENSMBL 98 Only </a>')
@@ -60,9 +71,11 @@ print('<div class="h-100 row align-items-center justify-content-center">')
 print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
 print('<h1>Genes and Transcripts Annotated in the 82 Release Only</h1>')
+print('<h4>Genes<a href="#genes" name="top"></a></h4>')  # Internal Link
+print('<h4>Transcripts<a href="#transcripts"></a></h4>')  # Internal Link
 print('</div><!-- end of the header row -->')
 print('<div class="row pt-5"><!-- Gene table row -->')
-print('<h2>Genes</h2>')
+print('<a name="genes"><h2>Genes</h2></a>')
 print('<table class="table table-striped">')
 print('<thead class="bg-danger">')
 print('<tr>')
@@ -71,23 +84,27 @@ print('<th scope="col">Gene</th>')
 print('</tr>')
 print('</thead>')
 print('<tbody>')
-print('<tr>')
-print('<th scope="row">1</th>')
-print('<td>Mark</td>')
-print('</tr>')
-print('<tr>')
-print('<th scope="row">2</th>')
-print('<td>Jacob</td>')
-print('</tr>')
-print('<tr>')
-print('<th scope="row">3</th>')
-print('<td>Larry</td>')
-print('</tr>')
+try:
+    # Get all of the genes and transcripts
+    with conn.cursor() as cursor:
+        cursor.execute('SELECT DISTINCT GENE_ID from overbejt.geneII WHERE ENSMBLE_VERSION=82 AND FEATURE="gene"')
+        res = cursor.fetchall()
+        # Loop and print the table
+        row_cnt = 1
+        for row in res:
+            print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+            print('<td>{0}</td>'.format(row['GENE_ID']))
+            print('</tr>')
+            row_cnt += 1
+
+finally:
+    pass
 print('</tbody>')
 print('</table>')
 print('</div><!-- end of the Gene Category 1 table row -->')
 print('<div class="row pt-5"><!-- Transcripts table row -->')
-print('<h2>Transcripts</h2>')
+print('<h4>Back to top<a href="#top"></a></h4>')
+print('<h2>Transcripts<a name="transcripts"></a></h2>')
 print('<table class="table table-striped">')
 print('<thead class="bg-danger">')
 print('<tr>')
@@ -96,6 +113,21 @@ print('<th scope="col">Transcript</th>')
 print('</tr>')
 print('</thead>')
 print('<tbody>')
+try:
+    # Get all of the genes and transcripts
+    with conn.cursor() as cursor:
+        cursor.execute('SELECT DISTINCT TRANSCRIPT_NAME from overbejt.geneII WHERE ENSMBLE_VERSION=82 AND FEATURE="transcript"')
+        res = cursor.fetchall()
+        # Loop and print the table
+        row_cnt = 1
+        for row in res:
+            print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+            print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
+            print('</tr>')
+            row_cnt += 1
+
+finally:
+    conn.close()
 print('<tr>')
 print('<th scope="row">1</th>')
 print('<td>Mark</td>')
