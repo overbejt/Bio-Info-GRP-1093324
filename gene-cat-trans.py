@@ -73,7 +73,6 @@ print('<div class="row"><!-- header row -->')
 print('<h1>Transcript Numbers Associated Wich Each Gene Category<br></h1>')
 print('</div><!-- end of the header row -->')
 
-# gene_cat = []
 try:
     # Get all of the gene categories
     with conn.cursor() as cursor:
