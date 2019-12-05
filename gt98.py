@@ -71,9 +71,8 @@ print('<div class="h-100 row align-items-center justify-content-center">')
 print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
 print('<h1>Genes and Transcripts Annotated in the 98 Release Only</h1>')
-print('<a href="#genes" name="top"><h4>Genes</h4></a>')  # Internal Link
-print(' ')
-print('<a href="#transcripts"><h4>Transcripts</h4></a>')  # Internal Link
+print('<h4>Genes<a href="#genes" name="top"></a></h4>')  # Internal Link
+print('<h4>Transcripts<a href="#transcripts"></a></h4>')  # Internal Link
 print('</div><!-- end of the header row -->')
 print('<div class="row pt-5"><!-- Gene table row -->')
 print('<a name="genes"><h2>Genes</h2></a>')
@@ -100,26 +99,12 @@ try:
 
 finally:
     pass
-    # conn.close()
-# print('<tr>')
-# print('<th scope="row">1</th>')
-# print('<td>Mark</td>')
-# print('</tr>')
-# print('<tr>')
-# print('<th scope="row">2</th>')
-# print('<td>Jacob</td>')
-# print('</tr>')
-# print('<tr>')
-# print('<th scope="row">3</th>')
-# print('<td>Larry</td>')
-# print('</tr>')
 print('</tbody>')
 print('</table>')
 print('</div><!-- end of the Gene Category 1 table row -->')
 print('<div class="row pt-5"><!-- Transcripts table row -->')
-print('<a href="#top"><h4>Back to top</h4></a>')
-print('<a name="transcripts"><h2>Transcripts</h2></a>')
-print(' ')
+print('<h4>Back to top<a href="#top"></a></h4>')
+print('<h2>Transcripts<a name="transcripts"></a></h2>')
 print('<table class="table table-striped">')
 print('<thead class="bg-danger">')
 print('<tr>')
