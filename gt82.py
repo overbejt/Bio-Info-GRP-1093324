@@ -55,7 +55,7 @@ print('<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDro
 print('<a class="dropdown-item" href="cat-count.py">Categories of Genes</a>')
 print('<a class="dropdown-item" href="ano-transc-cnt.py"> Annotated Transcripts </a>')
 print('<a class="dropdown-item" href="gene-cat-trans.py"> Transcripts by Gene Category </a>')
-print('<a class="dropdown-item" href="min-max.py" > Min/max of Transcripts per Gene </a>')
+# print('<a class="dropdown-item" href="min-max.py" > Min/max of Transcripts per Gene </a>')
 print('<!-- NOT YET - ->')
 print('<!-- < a class = "dropdown-item" href = "gene-annotation.html" > Annotations < /a > -->')
 print('<a class="dropdown-item" href="gt98.py"> Genes and Transcripts -- ENSMBL 98 Only </a>')
