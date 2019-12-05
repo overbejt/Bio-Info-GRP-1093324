@@ -72,10 +72,10 @@ print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
 print('<h1>Genes and Transcripts Annotated in the 98 Release Only</h1>')
 print('</div><!-- end of the header row -->')
-print('<div class="row"><div class="col-*-12')
-print('<div class="row"><a href="#genes" name="top"><h4>Genes</h4></a></div>')  # Internal Link
-print('<div class="row"><a href="#transcripts"><h4>Transcripts</h4></a></div>')
-print('</div></div>')  # Internal Link
+# print('<div class="row"><div class="col-*-12')
+# print('<div class="row"><a href="#genes" name="top"><h4>Genes</h4></a></div>')  # Internal Link
+# print('<div class="row"><a href="#transcripts"><h4>Transcripts</h4></a></div>')
+# print('</div>')  # Internal Link
 print('<div class="row pt-5"><!-- Gene table row -->')
 print('<a name="genes"><h2>Genes</h2></a>')
 print('<table class="table table-striped">')
@@ -104,8 +104,8 @@ finally:
 print('</tbody>')
 print('</table>')
 print('</div><!-- end of the Gene Category 1 table row -->')
-print('<div class="row pt-2"><a href="#top"><h4>Back to top</h4></a></div>')
-print('<div class="row pt-2"><!-- Transcripts table row -->')
+# print('<div class="row pt-2"><a href="#top"><h4>Back to top</h4></a></div>')
+print('<div class="row pt-5"><!-- Transcripts table row -->')
 print('<a name="transcripts"><h2>Transcripts</h2></a>')
 print('<table class="table table-striped">')
 print('<thead class="bg-danger">')
