@@ -84,7 +84,7 @@ try:
         for row in gene_cat:
             # Print a Table header
             print('<div class="row pt-5">')
-            print('<h2>{0}</h2>'.format(row[GENE_BIOTYPE]))
+            print('<h2>{0}</h2>'.format(row['GENE_BIOTYPE']))
             print('<table class="table table-striped">')
             print('<thead class="bg-danger">')
             print('<tr>')
