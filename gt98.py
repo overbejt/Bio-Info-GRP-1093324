@@ -72,7 +72,7 @@ print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
 print('<h1>Genes and Transcripts Annotated in the 98 Release Only</h1>')
 print('</div><!-- end of the header row -->')
-print('<div class="row"><a href="#genes" name="top"><h4>Genes</h4></a>')  # Internal Link
+print('<div class="row"><a href="#genes" name="top"><h4>Genes<br></h4></a>')  # Internal Link
 print('<a href="#transcripts"><h4>Transcripts</h4></a></div>')  # Internal Link
 print('<div class="row pt-5"><!-- Gene table row -->')
 print('<a name="genes"><h2>Genes</h2></a>')
