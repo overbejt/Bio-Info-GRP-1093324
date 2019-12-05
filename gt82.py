@@ -125,18 +125,7 @@ try:
 
 finally:
     conn.close()
-print('<tr>')
-print('<th scope="row">1</th>')
-print('<td>Mark</td>')
-print('</tr>')
-print('<tr>')
-print('<th scope="row">2</th>')
-print('<td>Jacob</td>')
-print('</tr>')
-print('<tr>')
-print('<th scope="row">3</th>')
-print('<td>Larry</td>')
-print('</tr>')
+
 print('</tbody>')
 print('</table>')
 print('</div><!-- end of the Transcripts table row -->')
