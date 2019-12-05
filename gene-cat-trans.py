@@ -1,7 +1,17 @@
 #!/usr/bin/env python3
+import pymysql.cursors
+import pymysql
 import cgi
 import cgitb
 cgitb.enable()
+
+# Connect to the database
+conn = pymysql.connect(host='localhost',
+                       user='overbejt',
+                       password='bio466',
+                       cursorclass=pymysql.cursors.DictCursor)
+
+# Print out all the html
 print('Content-Type: text/html')
 print('')
 print('<!DOCTYPE html>')
@@ -62,6 +72,49 @@ print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
 print('<h1>Transcript Numbers Associated Wich Each Gene Category<br></h1>')
 print('</div><!-- end of the header row -->')
+
+# gene_cat = []
+try:
+    # Get all of the gene categories
+    with conn.cursor() as cursor:
+        cursor.execute('SELECT DISTINCT GENE_BIOTYPE FROM overbejt.geneII where FEATURE="transcript"')
+        gene_cat = cursor.fetchall()
+
+        # Loop through each gene category
+        for row in gene_cat:
+            # Print a Table header
+            print('<div class="row pt-5">')
+            print('<h2>{0}</h2>'.format(row[GENE_BIOTYPE]))
+            print('<table class="table table-striped">')
+            print('<thead class="bg-danger">')
+            print('<tr>')
+            print('<th scope="col">Row</th>')
+            print('<th scope="col">Transcript Number</th>')
+            print('</tr>')
+            print('</thead>')
+
+            # Get the transcript numbers for each row
+            sql = 'SELECT DISTINCT TRANSCRIPT_ID FROM overbejt.geneII WHERE GENE_BIOTYPE=%s'
+            cursor.execute(sql, row['GENE_BIOTYPE'])
+            trans_nums = cursor.fetchall()
+            row_cnt = 1
+            for trans_num in trans_nums:
+
+                print('<tbody>')
+                print('<tr>')
+                print('<th scope="row">{0}</th>'.format(row_cnt))
+                print('<td>{0}</td>'.format(trans_num['TRANSCRIPT_ID']))
+                print('</tr>')
+                print('<tr>')
+                row_cnt += 1
+
+            # Close the table off
+            print('</tbody>')
+            print('</table>')
+            print('</div>')
+
+finally:
+    conn.close()
 print('<div class="row pt-5"><!-- Gene Category 1 table row -->')
 print('<h2>Gene Category 1</h2>')
 print('<table class="table table-striped">')
@@ -87,31 +140,31 @@ print('</tr>')
 print('</tbody>')
 print('</table>')
 print('</div><!-- end of the Gene Category 1 table row -->')
-print('<div class="row pt-5"><!-- Gene Category 2 table row -->')
-print('<h2>Gene Category 2</h2>')
-print('<table class="table table-striped">')
-print('<thead class="bg-danger">')
-print('<tr>')
-print('<th scope="col">Row</th>')
-print('<th scope="col">Transcript Number</th>')
-print('</tr>')
-print('</thead>')
-print('<tbody>')
-print('<tr>')
-print('<th scope="row">1</th>')
-print('<td>Mark</td>')
-print('</tr>')
-print('<tr>')
-print('<th scope="row">2</th>')
-print('<td>Jacob</td>')
-print('</tr>')
-print('<tr>')
-print('<th scope="row">3</th>')
-print('<td>Larry</td>')
-print('</tr>')
-print('</tbody>')
-print('</table>')
-print('</div><!-- end of the Gene Category 2 table row -->')
+# print('<div class="row pt-5"><!-- Gene Category 2 table row -->')
+# print('<h2>Gene Category 2</h2>')
+# print('<table class="table table-striped">')
+# print('<thead class="bg-danger">')
+# print('<tr>')
+# print('<th scope="col">Row</th>')
+# print('<th scope="col">Transcript Number</th>')
+# print('</tr>')
+# print('</thead>')
+# print('<tbody>')
+# print('<tr>')
+# print('<th scope="row">1</th>')
+# print('<td>Mark</td>')
+# print('</tr>')
+# print('<tr>')
+# print('<th scope="row">2</th>')
+# print('<td>Jacob</td>')
+# print('</tr>')
+# print('<tr>')
+# print('<th scope="row">3</th>')
+# print('<td>Larry</td>')
+# print('</tr>')
+# print('</tbody>')
+# print('</table>')
+# print('</div><!-- end of the Gene Category 2 table row -->')
 print('</div><!-- end of container col -->')
 print('</div><!-- end of container row -->')
 print('</div><!-- end of the main container -->')
