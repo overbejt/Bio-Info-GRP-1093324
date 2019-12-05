@@ -70,7 +70,7 @@ print('<div class="container">')
 print('<div class="h-100 row align-items-center justify-content-center">')
 print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
-print('<h1>Transcript Numbers Associated Wich Each Gene Category<br></h1>')
+print('<h1>Transcript Numbers Associated With Each Gene Category<br></h1>')
 print('</div><!-- end of the header row -->')
 
 try:
