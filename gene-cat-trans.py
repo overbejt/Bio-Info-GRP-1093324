@@ -94,7 +94,7 @@ try:
             print('</thead>')
 
             # Get the transcript numbers for each row
-            sql = 'SELECT DISTINCT TRANSCRIPT_ID FROM overbejt.geneII WHERE GENE_BIOTYPE=%s'
+            sql = 'SELECT DISTINCT TRANSCRIPT_ID FROM overbejt.geneII WHERE GENE_BIOTYPE=%s AND GENE_BIOTYPE !="null"'
             cursor.execute(sql, row['GENE_BIOTYPE'])
             trans_nums = cursor.fetchall()
             row_cnt = 1
