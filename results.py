@@ -85,67 +85,67 @@ print('<h1>This is where the search results will end up</h1>')
 print('</div><!-- end of the header row -->')
 
 # Print out table for gene only if user entered a gene name
-if gene_name not None:
-    print('<div class="row pt-5"><!-- Gene table row -->')
-    print('<a name="genes"><h2>Genes</h2></a>')
-    print('<table class="table table-striped">')
-    print('<thead class="bg-danger">')
-    print('<tr>')
-    print('<th scope="col">Row</th>')
-    print('<th scope="col">Gene</th>')
-    print('</tr>')
-    print('</thead>')
-    print('<tbody>')
-    # try:
-    #     # Get all of the genes and transcripts
-    #     with conn.cursor() as cursor:
-    #         cursor.execute('SELECT DISTINCT GENE_ID from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="gene"')
-    #         res = cursor.fetchall()
-    #         # Loop and print the table
-    #         row_cnt = 1
-    #         for row in res:
-    #             print('<tr><th scope="row">{0}</th>'.format(row_cnt))
-    #             print('<td>{0}</td>'.format(row['GENE_ID']))
-    #             print('</tr>')
-    #             row_cnt += 1
-
-    # finally:
-    #     pass
-    print('</tbody>')
-    print('</table>')
-    print('</div><!-- end of the Gene Category 1 table row -->')
-
-# Print out data for transcript only if the user entered a transcipt name
-# if trans_name is not None:
-#     print('<div class="row pt-5"><!-- Transcripts table row -->')
-#     print('<a name="transcripts"><h2>Transcripts</h2></a>')
+# if gene_name not None:
+#     print('<div class="row pt-5"><!-- Gene table row -->')
+#     print('<a name="genes"><h2>Genes</h2></a>')
 #     print('<table class="table table-striped">')
 #     print('<thead class="bg-danger">')
 #     print('<tr>')
 #     print('<th scope="col">Row</th>')
-#     print('<th scope="col">Transcript</th>')
+#     print('<th scope="col">Gene</th>')
 #     print('</tr>')
 #     print('</thead>')
 #     print('<tbody>')
 #     # try:
 #     #     # Get all of the genes and transcripts
 #     #     with conn.cursor() as cursor:
-#     #         cursor.execute('SELECT DISTINCT TRANSCRIPT_NAME from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="transcript"')
+#     #         cursor.execute('SELECT DISTINCT GENE_ID from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="gene"')
 #     #         res = cursor.fetchall()
 #     #         # Loop and print the table
 #     #         row_cnt = 1
 #     #         for row in res:
 #     #             print('<tr><th scope="row">{0}</th>'.format(row_cnt))
-#     #             print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
+#     #             print('<td>{0}</td>'.format(row['GENE_ID']))
 #     #             print('</tr>')
 #     #             row_cnt += 1
 
 #     # finally:
-#     #     conn.close()
-
+#     #     pass
 #     print('</tbody>')
 #     print('</table>')
-#     print('</div><!-- end of the Transcripts table row -->')
+#     print('</div><!-- end of the Gene Category 1 table row -->')
+
+# Print out data for transcript only if the user entered a transcipt name
+if trans_name is not None:
+    print('<div class="row pt-5"><!-- Transcripts table row -->')
+    print('<a name="transcripts"><h2>Transcripts</h2></a>')
+    print('<table class="table table-striped">')
+    print('<thead class="bg-danger">')
+    print('<tr>')
+    print('<th scope="col">Row</th>')
+    print('<th scope="col">Transcript</th>')
+    print('</tr>')
+    print('</thead>')
+    print('<tbody>')
+    # try:
+    #     # Get all of the genes and transcripts
+    #     with conn.cursor() as cursor:
+    #         cursor.execute('SELECT DISTINCT TRANSCRIPT_NAME from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="transcript"')
+    #         res = cursor.fetchall()
+    #         # Loop and print the table
+    #         row_cnt = 1
+    #         for row in res:
+    #             print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+    #             print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
+    #             print('</tr>')
+    #             row_cnt += 1
+
+    # finally:
+    #     conn.close()
+
+    print('</tbody>')
+    print('</table>')
+    print('</div><!-- end of the Transcripts table row -->')
 print('</div><!-- end of container col -->')
 print('</div><!-- end of container row -->')
 print('</div><!-- end of the main container -->')
