@@ -1,1 +1,5 @@
+** This is the command used to load the data into the database.  The path to the
+data file will need to be changed accordingly.  And the table name will have to
+be changed too.
+
 load data local infile '/home/overbejt/dbData.txt' into table overbejt.geneII fields terminated by '\t' lines terminated by '\n' (ENSMBLE_VERSION, SEQ_NAME, SOURCE_ID, FEATURE, START_INDEX, END_INDEX, SCORE, STRAND, FRAME, TRANSCRIPT_VERSION, TRANSCRIPT_SOURCE, TRANSCRIPT_BIOTYPE, TRANSCRIPT_SUPPORT_LEVEL, GENE_VERSION, EXON_ID, CCDS_ID, TRANSCRIPT_NAME, EXON_VERSION, TRANSCRIPT_ID, GENE_NAME, PROTEIN_ID, PROTEIN_VERSION, TAG, GENE_SOURCE, GENE_BIOTYPE, GENE_ID, EXON_NUMBER);
