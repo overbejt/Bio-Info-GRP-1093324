@@ -6,7 +6,10 @@ import cgitb
 cgitb.enable()
 
 # Connect to the database
-conn = pymysql.connect(host='localhost', user='overbejt', password='bio466', cursorclass=pymysql.cursors.DictCursor)
+conn = pymysql.connect(host='localhost',
+                       user='overbejt',
+                       password='bio466',
+                       cursorclass=pymysql.cursors.DictCursor)
 
 # Print some html
 print('<!DOCTYPE html>')
