@@ -73,31 +73,75 @@ print('<th scope="col">Category</th>')
 print('<th scope="col">Count</th>')
 print('</tr>')
 print('</thead>')
-print('<tbody>')
-print('<tr>')
-print('<td>Genes Total</td>')
-print('<td>13498134</td>')
-print('</tr>')
-print('<tr>')
-print('<td>Transcripts Total</td>')
-print('<td>039410</td>')
-print('</tr>')
-print('<tr>')
-print('<td>Genes in 98</td>')
-print('<td>93984</td>')
-print('</tr>')
-print('<tr>')
-print('<td>Genes in 82</td>')
-print('<td>93984</td>')
-print('</tr>')
-print('<tr>')
-print('<td>Transcripts in 98</td>')
-print('<td>93984</td>')
-print('</tr>')
-print('<tr>')
-print('<td>Transcripts in 82</td>')
-print('<td>93984</td>')
-print('</tr>')
+
+try:
+    # Get all of the gene categories and their count
+    with conn.cursor() as cursor:
+        # Get the total count of genes
+        sql = 'SELECT COUNT(DISTINCT GENE_ID) AS count FROM geneII WHERE FEATURE=\'gene\''
+        cursor.execute(sql)
+        res = cursor.fetchone()
+        gene_total = res['count']
+
+        # Ge the total count of transcripts
+        sql = 'SELECT COUNT(DISTINCT TRANSCRIPT_ID) AS count FROM geneII WHERE FEATURE=\'transcript\''
+        cursor.execute(sql)
+        res = cursor.fetchone()
+        gene_total = res['count']
+
+        # Get the total count of genes in 98
+        sql = 'SELECT COUNT(DISTINCT GENE_ID) AS count FROM geneII WHERE FEATURE=\'gene\' AND ENSMBLE_VERSION = 98'
+        cursor.execute(sql)
+        res = cursor.fetchone()
+        genes_98 = res['count']
+
+        # Get the total count of genes in 82
+        sql = 'SELECT COUNT(DISTINCT GENE_ID) AS count FROM geneII WHERE FEATURE=\'gene\' AND ENSMBLE_VERSION = 82'
+        cursor.execute(sql)
+        res = cursor.fetchone()
+        genes_82 = res['count']
+
+        # Get the total count of transcripts in 98
+        sql = 'SELECT COUNT(DISTINCT TRANSCRIPT_ID) AS count FROM geneII WHERE FEATURE=\'transcript\' AND ENSMBLE_VERSION = 98'
+        cursor.execute(sql)
+        res = cursor.fetchone()
+        genes_98 = res['count']
+
+        # Get the total count of transcripts in 82
+        sql = 'SELECT COUNT(DISTINCT TRANSCRIPT_ID) AS count FROM geneII WHERE FEATURE=\'transcript\' AND ENSMBLE_VERSION = 82'
+        cursor.execute(sql)
+        res = cursor.fetchone()
+        genes_82 = res['count']
+
+    print('<tbody>')
+    print('<tr>')
+    print('<td>Genes Total</td>')
+    print('<td>{0}</td>'.format(gene_total))
+    print('</tr>')
+    print('<tr>')
+    print('<td>Transcripts Total</td>')
+    print('<td>{0}</td>'.format(transcript_total))
+    print('</tr>')
+    print('<tr>')
+    print('<td>Genes in 98</td>')
+    print('<td>{0}</td>'.format(genes_98))
+    print('</tr>')
+    print('<tr>')
+    print('<td>Genes in 82</td>')
+    print('<td>{0}</td>'.format(genes_82))
+    print('</tr>')
+    print('<tr>')
+    print('<td>Transcripts in 98</td>')
+    print('<td>{0}</td>'.format(trans_98))
+    print('</tr>')
+    print('<tr>')
+    print('<td>Transcripts in 82</td>')
+    print('<td>{0}</td>'.format(trans_82))
+    print('</tr>')
+
+finally:
+    conn.close()
+
 print('</tbody>')
 print('</table>')
 print('</div>')
