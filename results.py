@@ -5,6 +5,13 @@ import cgi
 import cgitb
 cgitb.enable()
 
+# Create an instance of the FieldStorage
+form = cgi.FieldStorage()
+
+# Get the names
+gene_name = form.getvalue('gene_form')
+trans_name = form.getvalue('transcript_form')
+
 # Connect to the database
 conn = pymysql.connect(host='localhost',
                        user='overbejt',
@@ -72,6 +79,9 @@ print('<div class="h-100 row align-items-center justify-content-center">')
 print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
 print('<h1>This is where the search results will end up</h1>')
+
+print('<p>The gene name is {0} and the transcript name is {1}'.format(gene_name, trans_name))
+
 print('</div><!-- end of the header row -->')
 print('<div class="row pt-5"><!-- Gene table row -->')
 print('<a name="genes"><h2>Genes</h2></a>')
