@@ -142,17 +142,13 @@ if trans_name is not None:
             cursor.execute(sql, trans_name)
             res = cursor.fetchall()
             # Loop and print the table
-            count = 1
             print(res)  # Debugging
-            # for row in res:
-            #     # print('<tr>')
-            #     # Avoid printing duplicates
-            #     if count < 2:
-            #         # print('<td>{0}</td>'.format(trans_name))
-            #         # print('<td>{0}</td>'.format(row['START_INDEX']))
-            #         # print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
-            #         # print('</tr>')
-            #     count += 1
+            for row in res:
+                # print('<tr>')
+                # print('<td>{0}</td>'.format(trans_name))
+                # print('<td>{0}</td>'.format(row['START_INDEX']))
+                # print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
+                # print('</tr>')
 
     finally:
         conn.close()
