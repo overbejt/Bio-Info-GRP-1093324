@@ -18,6 +18,19 @@ questions were as follows:
   4. What are the genes and transcripts annotated in release 82?
   5. What are the genes and transcripts annotated in release 98?
 
+** Setting up the website **
+The easiest way to replicate this website is clone the git repository.
+The repository is located at:
+https://github.com/overbejt/Bio-Info-GRP-1093324.git
+
+Once the repository is cloned, the website ready to go.  To build the
+website manually, refer to the section ** Setting up the Database **,
+below.  Once the database is setup, put the files: about.html,
+ano-transc-cnt.py, cat-count.py, gene-cat-trans.py, gt82.py, gt98.py,
+index.html, min-max.py, results.py, search.py into your public_html
+folder.  You will also need to move the folders: css/ and images/ to
+your public_html folder.  Then the website should be ready to go.
+
 ** File Structure **
 - css/
     - bio.css
