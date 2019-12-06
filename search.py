@@ -87,7 +87,7 @@ try:
         sql = 'SELECT COUNT(DISTINCT TRANSCRIPT_ID) AS count FROM overbejt.geneII WHERE FEATURE=\'transcript\''
         cursor.execute(sql)
         res = cursor.fetchone()
-        gene_total = res['count']
+        transcript_total = res['count']
 
         # Get the total count of genes in 98
         sql = 'SELECT COUNT(DISTINCT GENE_ID) AS count FROM overbejt.geneII WHERE FEATURE=\'gene\' AND ENSMBLE_VERSION = 98'
@@ -105,13 +105,13 @@ try:
         sql = 'SELECT COUNT(DISTINCT TRANSCRIPT_ID) AS count FROM overbejt.geneII WHERE FEATURE=\'transcript\' AND ENSMBLE_VERSION = 98'
         cursor.execute(sql)
         res = cursor.fetchone()
-        genes_98 = res['count']
+        trans_98 = res['count']
 
         # Get the total count of transcripts in 82
         sql = 'SELECT COUNT(DISTINCT TRANSCRIPT_ID) AS count FROM overbejt.geneII WHERE FEATURE=\'transcript\' AND ENSMBLE_VERSION = 82'
         cursor.execute(sql)
         res = cursor.fetchone()
-        genes_82 = res['count']
+        trans_82 = res['count']
 
     print('<tbody>')
     print('<tr>')
