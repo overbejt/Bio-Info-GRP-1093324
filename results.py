@@ -116,7 +116,13 @@ if gene_name is not None:
                 print('<td>{0}</td>'.format(res['GENE_BIOTYPE']))
                 print('</tr>')
             else:
-                print('<tr><td>Gene {0} does not exist</td></tr>'.format(gene_name))
+                print('<tr>')
+                print('<td>Gene {0} does not exist</td>'.format(gene_name))
+                print('<td></td>')
+                print('<td></td>')
+                print('<td></td>')
+                print('<td></td>')
+                print('</tr>')
 
     finally:
         conn.close()
@@ -182,7 +188,13 @@ if trans_name is not None:
                         print('</tr>')
                     count += 1
             else:
-                print('<tr><td>Transcript {0} does not exist</td></tr>'.format(trans_name))
+                print('<tr>')
+                print('<td>Transcript {0} does not exist</td>'.format(trans_name))
+                print('<td></td>')
+                print('<td></td>')
+                print('<td></td>')
+                print('<td></td>')
+                print('</tr>')
 
     finally:
         conn.close()
