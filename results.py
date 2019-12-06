@@ -128,23 +128,32 @@ if trans_name is not None:
     print('<table class="table table-striped">')
     print('<thead class="bg-danger">')
     print('<tr>')
-    print('<th scope="col">Row</th>')
-    print('<th scope="col">Transcript</th>')
+    print('<th scope="col">Transcript Name</th>')
+    print('<th scope="col">Start</th>')
+    print('<th scope="col">End</th>')
+    print('<th scope="col">Exons Count</th>')
+    print('<th scope="col">Introns Count</th>')
     print('</tr>')
     print('</thead>')
     print('<tbody>')
     try:
         # Get all of the genes and transcripts
         with conn.cursor() as cursor:
-            cursor.execute('SELECT DISTINCT TRANSCRIPT_NAME from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="transcript"')
+            sql = 'SELECT DISTINCT START_INDEX, END_INDEX FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s'
+            cursor.execute(sql, trans_name)
             res = cursor.fetchall()
             # Loop and print the table
-            row_cnt = 1
+            count = 1
+            print(res)  # Debugging
             for row in res:
-                print('<tr><th scope="row">{0}</th>'.format(row_cnt))
-                print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
-                print('</tr>')
-                row_cnt += 1
+                # print('<tr>')
+                # Avoid printing duplicates
+                if count < 2:
+                # print('<td>{0}</td>'.format(trans_name))
+                # print('<td>{0}</td>'.format(row['START_INDEX']))
+                # print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
+                # print('</tr>')
+                count += 1
 
     finally:
         conn.close()
