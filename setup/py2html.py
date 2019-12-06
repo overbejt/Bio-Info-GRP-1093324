@@ -13,6 +13,8 @@ def main():
     ofile.write('import cgi\nimport cgitb\ncgitb.enable()\n\n')
     ofile.write('# Connect to the database\n')
     ofile.write('conn = pymysql.connect(host=\'localhost\', user=\'overbejt\', password=\'bio466\', cursorclass=pymysql.cursors.DictCursor)\n\n')
+    ofile.write('print(\'Content-Type: text/html\')\n')
+    ofile.write('\'print('')\n')
 
     for iline in ifile:
         oline = 'print(\''

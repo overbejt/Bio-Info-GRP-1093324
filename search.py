@@ -12,6 +12,8 @@ conn = pymysql.connect(host='localhost',
                        cursorclass=pymysql.cursors.DictCursor)
 
 # Print some html
+print('Content-Type: text/html')
+print('')
 print('<!DOCTYPE html>')
 print('<html lang="en">')
 print('<head>')
