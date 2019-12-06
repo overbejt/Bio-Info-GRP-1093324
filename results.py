@@ -80,7 +80,7 @@ print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 print('<div class="row"><!-- header row -->')
 print('<h1>This is where the search results will end up</h1>')
 
-# print('<p>The gene name is {0} and the transcript name is {1}'.format(gene_name, trans_name))
+print('<p>The gene name is {0} and the transcript name is {1}'.format(gene_name, trans_name))
 
 print('</div><!-- end of the header row -->')
 
