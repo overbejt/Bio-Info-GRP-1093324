@@ -144,6 +144,7 @@ if trans_name is not None:
             # Loop and print the table
             # print(res)  # Debugging
             for row in res:
+                print()
                 # print('<tr>')
                 # print('<td>{0}</td>'.format(trans_name))
                 # print('<td>{0}</td>'.format(row['START_INDEX']))
