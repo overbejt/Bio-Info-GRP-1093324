@@ -135,27 +135,27 @@ if trans_name is not None:
     print('</tr>')
     print('</thead>')
     print('<tbody>')
-    # try:
-    #     # Get all of the transcripts table data
-    #     with conn.cursor() as cursor:
-    #         sql = 'SELECT DISTINCT START_INDEX, END_INDEX FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s'
-    #         cursor.execute(sql, trans_name)
-    #         res = cursor.fetchall()
-    #         # Loop and print the table
-    #         count = 1
-    #         print(res)  # Debugging
-    #         for row in res:
-    #             # print('<tr>')
-    #             # Avoid printing duplicates
-    #             if count < 2:
-    #                 # print('<td>{0}</td>'.format(trans_name))
-    #                 # print('<td>{0}</td>'.format(row['START_INDEX']))
-    #                 # print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
-    #                 # print('</tr>')
-    #             count += 1
+    try:
+        # Get all of the transcripts table data
+        with conn.cursor() as cursor:
+            sql = 'SELECT DISTINCT START_INDEX, END_INDEX FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s'
+            cursor.execute(sql, trans_name)
+            res = cursor.fetchall()
+            # Loop and print the table
+            count = 1
+            print(res)  # Debugging
+            # for row in res:
+            #     # print('<tr>')
+            #     # Avoid printing duplicates
+            #     if count < 2:
+            #         # print('<td>{0}</td>'.format(trans_name))
+            #         # print('<td>{0}</td>'.format(row['START_INDEX']))
+            #         # print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
+            #         # print('</tr>')
+            #     count += 1
 
-    # finally:
-    #     conn.close()
+    finally:
+        conn.close()
     print('</tbody>')
     print('</table>')
     print('</div><!-- end of the Transcripts table row -->')
