@@ -142,7 +142,7 @@ if trans_name is not None:
             cursor.execute(sql, trans_name)
             res = cursor.fetchall()
             # Loop and print the table
-            print(res)  # Debugging
+            # print(res)  # Debugging
             for row in res:
                 # print('<tr>')
                 # print('<td>{0}</td>'.format(trans_name))
