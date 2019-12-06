@@ -1,31 +1,57 @@
 ** Introduction **
-Automation in gene annotation is needed because it cuts down the manual 
-workload greatly. According to a research article published in BMC 
-Bioinformatics, semi-automating gene annotation comparisons decreased 
-manual comparison to only 13% of the gene. In this project, we explore 
-semi-automating the comparison of gene annotations. The purpose of this 
-project is to compare the gene annotations between two releases of a 
-specified gene. In our project, we used the mouse genome between 
+Automation in gene annotation is needed because it cuts down the manual
+workload greatly. According to a research article published in BMC
+Bioinformatics, semi-automating gene annotation comparisons decreased
+manual comparison to only 13% of the gene. In this project, we explore
+semi-automating the comparison of gene annotations. The purpose of this
+project is to compare the gene annotations between two releases of a
+specified gene. In our project, we used the mouse genome between
 ENSEMBL release 82 and release 98.
 
-We had five questions that we wanted to answer with our project. The 
+We had five questions that we wanted to answer with our project. The
 questions were as follows:
   1. How many different categories of genes are there and what are their
      counts?
-  2. How many transcripts are annotated in release 82, release 98, and 
+  2. How many transcripts are annotated in release 82, release 98, and
      in total?
   3. What are the transcript numbers associated with each gene category?
   4. What are the genes and transcripts annotated in release 82?
   5. What are the genes and transcripts annotated in release 98?
 
-All of the files needed to set things are are in the folder called 
-'setup'.
+** File Structure **
+- css/
+    - bio.css
+- images/
+    - Miami_Redhawks_logo.svg
+    - josh-at-graduation.jpg
+    - julia-at-pelotonia.JPG
+- setup/
+    - creatDbII.sql
+    - loadcmd.txt
+    - py2html.py
+    - tabS.py
+- templates/
+    - ano-transc-cnt.html
+    - cat-count.html
+    - gene-annotation.html
+    - gene-cat-trans.html
+    - gt82.html
+    - gt98.html
+    - min-max.html
+    - search.html
+- about.html
+- ano-transc-cnt.py
+- cat-count.py
+- gene-cat-trans.py
+- gt82.py
+- gt98.py
+- index.html
+- min-max.py
+- results.py
+- search.py
 
-The folder 'setup' includes:
-  - py2html.py
-  - tabS.py
-  - creatDbII.sql
-  - loadcmd.txt
+*All of the files needed to set things are are in the folder called
+'setup'.
 
 ** Designing the website **
 Designing a website using python cgi was challenging.  So, we designed the
