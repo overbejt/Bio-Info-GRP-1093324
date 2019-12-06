@@ -29,6 +29,8 @@ questions were as follows:
     - creatDbII.sql
     - dbData.txt
     - loadcmd.txt
+    - Mus_musculus.GRCm38.82.chr.gtf
+    - Mus_musculus.GRCm38.98.chr.gtf
     - py2html.py
     - tabS.py
 - templates/
