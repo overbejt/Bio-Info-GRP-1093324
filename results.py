@@ -91,23 +91,29 @@ if gene_name is not None:
     print('<table class="table table-striped">')
     print('<thead class="bg-danger">')
     print('<tr>')
-    print('<th scope="col">Row</th>')
-    print('<th scope="col">Gene</th>')
+    print('<th scope="col">Gene Name</th>')
+    print('<th scope="col">Start</th>')
+    print('<th scope="col">End</th>')
+    print('<th scope="col">Strand</th>')
+    print('<th scope="col">Gene Category</th>')
     print('</tr>')
     print('</thead>')
     print('<tbody>')
     try:
         # Get all of the genes and transcripts
         with conn.cursor() as cursor:
-            cursor.execute('SELECT DISTINCT GENE_ID from overbejt.geneII WHERE ENSMBLE_VERSION=98 AND FEATURE="gene"')
-            res = cursor.fetchall()
-            # Loop and print the table
-            row_cnt = 1
-            for row in res:
-                print('<tr><th scope="row">{0}</th>'.format(row_cnt))
-                print('<td>{0}</td>'.format(row['GENE_ID']))
-                print('</tr>')
-                row_cnt += 1
+            sql = 'SELECT DISTINCT STRAND, START_INDEX, END_INDEX, GENE_BIOTYPE FROM overbejt.geneII WHERE GENE_NAME=%s'
+            cursor.execute(sql, gene_name)
+            res = cursor.fetchone()
+            # print('<tr><th scope="row">{0}</th>'.format(row_cnt))
+
+            print('<tr>')
+            print('<td>{0}</td>'.format(gene_name))
+            print('<td>{0}</td>'.format(res['START_INDEX']))
+            print('<td>{0}</td>'.format(res['END_INDEX']))
+            print('<td>{0}</td>'.format(res['STRAND']))
+            print('<td>{0}</td>'.format(res['GENE_BIOTYPE']))
+            print('</tr>')
 
     finally:
         pass
