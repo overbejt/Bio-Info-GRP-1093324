@@ -80,7 +80,7 @@ print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 # print('<div class="row"><!-- header row -->')
 # print('<h1>This is where the search results will end up</h1>')
 
-# # print('<p>The gene name is {0} and the transcript name is {1}'.format(gene_name, trans_name))
+print('<p>The gene name is {0} and the transcript name is {1}'.format(gene_name, trans_name))
 
 # print('</div><!-- end of the header row -->')
 
@@ -105,7 +105,6 @@ if gene_name is not None:
             sql = 'SELECT DISTINCT STRAND, START_INDEX, END_INDEX, GENE_BIOTYPE FROM overbejt.geneII WHERE GENE_NAME=%s'
             cursor.execute(sql, gene_name)
             res = cursor.fetchone()
-            # print('<tr><th scope="row">{0}</th>'.format(row_cnt))
 
             print('<tr>')
             print('<td>{0}</td>'.format(gene_name))
@@ -137,7 +136,7 @@ if trans_name is not None:
     print('</thead>')
     print('<tbody>')
     try:
-        # Get all of the genes and transcripts
+        # Get all of the transcripts table data
         with conn.cursor() as cursor:
             sql = 'SELECT DISTINCT START_INDEX, END_INDEX FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s'
             cursor.execute(sql, trans_name)
