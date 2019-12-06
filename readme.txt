@@ -27,6 +27,7 @@ questions were as follows:
     - julia-at-pelotonia.JPG
 - setup/
     - creatDbII.sql
+    - dbData.txt
     - loadcmd.txt
     - py2html.py
     - tabS.py
@@ -73,7 +74,7 @@ folder.  To create the table, you can use the contents from the file
 'createDbII.sql'.  After processing the data, you will have a file called
 dbData.txt.  To load the data into the database, copy the command from the
 file 'loadcmd.txt'.  Change the user name and table, in the command, as
-needed.
+needed.  The file containing the data for the database is setup/dbData.txt
 
 ** Trouble Shooting **
 If the web pages fail to load, check their permissions.  You may have to
