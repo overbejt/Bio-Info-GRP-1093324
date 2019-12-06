@@ -163,7 +163,7 @@ if trans_name is not None:
             start_end = cursor.fetchall()
 
             # Make sure there is something to actually print out
-            if start_end is not None:
+            if len(start_end) > 0:
                 # Print the first row
                 print('<tr>')
                 print('<td>{0}</td>'.format(trans_name))
