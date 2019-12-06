@@ -146,26 +146,24 @@ if trans_name is not None:
     print('</thead>')
     print('<tbody>')
     try:
-        # Get the count of exons for the transcript
         with conn.cursor() as cursor:
+            # Get the count of exons for the transcript
             sql = 'SELECT COUNT(*) AS exon_cnt FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s AND FEATURE="exon"'
             cursor.execute(sql, trans_name)
             exons = cursor.fetchone()
 
-        # Get the count of introns for the transcript
-        with conn.cursor() as cursor:
+            # Get the count of introns for the transcript
             sql = 'SELECT COUNT(*) AS intron_cnt FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s AND FEATURE="intron"'
             cursor.execute(sql, trans_name)
             introns = cursor.fetchone()
 
-        # Get all of the transcripts start and end positions
-        with conn.cursor() as cursor:
+            # Get all of the transcripts start and end positions
             sql = 'SELECT DISTINCT START_INDEX, END_INDEX FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s'
             cursor.execute(sql, trans_name)
             start_end = cursor.fetchall()
 
             # Make sure there is something to actually print out
-            if exons is not None and introns is not None and start_end is not None:
+            if start_end is not None:
                 # Print the first row
                 print('<tr>')
                 print('<td>{0}</td>'.format(trans_name))
