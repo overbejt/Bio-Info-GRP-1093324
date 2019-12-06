@@ -77,17 +77,17 @@ print('<!-- main container -->')
 print('<div class="container">')
 print('<div class="h-100 row align-items-center justify-content-center">')
 print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
-print('<div class="row"><!-- header row -->')
-print('<h1>This is where the search results will end up</h1>')
+# print('<div class="row"><!-- header row -->')
+# print('<h1>This is where the search results will end up</h1>')
 
-# print('<p>The gene name is {0} and the transcript name is {1}'.format(gene_name, trans_name))
+# # print('<p>The gene name is {0} and the transcript name is {1}'.format(gene_name, trans_name))
 
-print('</div><!-- end of the header row -->')
+# print('</div><!-- end of the header row -->')
 
 # Print out table for gene only if user entered a gene name
 if gene_name is not None:
     print('<div class="row pt-5"><!-- Gene table row -->')
-    print('<a name="genes"><h2>Genes</h2></a>')
+    print('<h1>Genes</h1>')
     print('<table class="table table-striped">')
     print('<thead class="bg-danger">')
     print('<tr>')
@@ -124,7 +124,7 @@ if gene_name is not None:
 # Print out data for transcript only if the user entered a transcipt name
 if trans_name is not None:
     print('<div class="row pt-5"><!-- Transcripts table row -->')
-    print('<a name="transcripts"><h2>Transcripts</h2></a>')
+    print('<h1>Transcripts</h1>')
     print('<table class="table table-striped">')
     print('<thead class="bg-danger">')
     print('<tr>')
