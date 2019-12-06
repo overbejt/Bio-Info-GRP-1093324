@@ -80,7 +80,7 @@ print('<div class="col-lg-8 col-md-8 col-sm-12 pt-5">')
 # print('<div class="row"><!-- header row -->')
 # print('<h1>This is where the search results will end up</h1>')
 
-print('<p>The gene name is {0} and the transcript name is {1}'.format(gene_name, trans_name))
+# print('<p>The gene name is {0} and the transcript name is {1}'.format(gene_name, trans_name))
 
 # print('</div><!-- end of the header row -->')
 
@@ -140,16 +140,15 @@ if trans_name is not None:
         with conn.cursor() as cursor:
             sql = 'SELECT DISTINCT START_INDEX, END_INDEX FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s'
             cursor.execute(sql, trans_name)
-            res = cursor.fetchall()
+            start_end = cursor.fetchall()
             # Loop and print the table
             # print(res)  # Debugging
-            for row in res:
-                print()
-                # print('<tr>')
-                # print('<td>{0}</td>'.format(trans_name))
-                # print('<td>{0}</td>'.format(row['START_INDEX']))
-                # print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
-                # print('</tr>')
+            for row in start_end:
+                print('<tr>')
+                print('<td>{0}</td>'.format(trans_name))
+                print('<td>{0}</td>'.format(row['START_INDEX']))
+                print('<td>{0}</td>'.format(row['END_INDEX']))
+                print('</tr>')
 
     finally:
         conn.close()
