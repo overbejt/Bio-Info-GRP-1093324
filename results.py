@@ -136,19 +136,33 @@ if trans_name is not None:
     print('</thead>')
     print('<tbody>')
     try:
-        # Get all of the transcripts table data
+        # Get the count of exons for the transcript
+        with conn.cursor() as cursor:
+            sql = 'SELECT COUNT(*) FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s AND FEATURE="exon"'
+            cursor.execute(sql, trans_name)
+            exons = cursor.fetchone()
+
+        # Get the count of introns for the transcript
+        with conn.cursor() as cursor:
+            sql = 'SELECT COUNT(*) FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s AND FEATURE="intron"'
+            cursor.execute(sql, trans_name)
+            introns = cursor.fetchone()
+
+        # Get all of the transcripts start and end positions
         with conn.cursor() as cursor:
             sql = 'SELECT DISTINCT START_INDEX, END_INDEX FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s'
             cursor.execute(sql, trans_name)
             start_end = cursor.fetchall()
             # Loop and print the table
-            # print(res)  # Debugging
-            for row in start_end:
-                print('<tr>')
-                print('<td>{0}</td>'.format(trans_name))
-                print('<td>{0}</td>'.format(row['START_INDEX']))
-                print('<td>{0}</td>'.format(row['END_INDEX']))
-                print('</tr>')
+
+            print('<tr><td>{0}</td></tr>'.format(start_end[0]['START_INDEX']))
+
+            # for row in start_end:
+            #     print('<tr>')
+            #     print('<td>{0}</td>'.format(trans_name))
+            #     print('<td>{0}</td>'.format(row['START_INDEX']))
+            #     print('<td>{0}</td>'.format(row['END_INDEX']))
+            #     print('</tr>')
 
     finally:
         conn.close()
