@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is for the final project in BIO 466">
+    <meta name="author" content="Josh Overbeck">
+    <meta name="author" content="Julia Timko">
+    <meta name="keywords" content="Bioinformatics Computer Science Gene annotation">
+    <meta name="contact" content="overbejt@miamioh.edu">
+    <meta name="contact" content="timkojm@miamioh.edu">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bio.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>BIO 466</title>
+  </head>
+  <body>
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="images/Miami_Redhawks_logo.svg" alt="Miami Redhawks logo" class="logo">
+        BIO 466
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="about.html">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Other pages <span class="sr-only">(current)</span></a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="gene-annotation.html">Annotations</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav><!-- end of navigation -->
+    <!-- main container -->
+    <div class="container">
+      <div class="h-100 row align-items-center justify-content-center">
+        <div class="col-lg-8 col-md-8 col-sm-12 pt-5">
+          <div class="row ml-auto mr-auto">
+            <h1>Search for a Gene or Transcript</h1>
+          </div>
+          <div>
+            <table class="table table-striped">
+              <thead class="bg-danger">
+                <tr>
+                  <th scope="col">Category</th>
+                  <th scope="col">Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Genes Total</td>
+                  <td>13498134</td>
+                </tr>
+                <tr>
+                  <td>Transcripts Total</td>
+                  <td>039410</td>
+                </tr>
+                <tr>
+                  <td>Genes in 98</td>
+                  <td>93984</td>
+                </tr>
+                <tr>
+                  <td>Genes in 82</td>
+                  <td>93984</td>
+                </tr>
+                <tr>
+                  <td>Transcripts in 98</td>
+                  <td>93984</td>
+                </tr>
+                <tr>
+                  <td>Transcripts in 82</td>
+                  <td>93984</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row pt-5"><!-- search row -->
+            <div class="col-lg-6 col-md-6 col-sm-12"> <!-- Gene form -->
+              <form>
+                <div class="form-group">
+                  <label for="gene_form">Search for a Gene</label>
+                  <input type="email" class="form-control" id="gene_form" placeholder="Enter a gene name">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div><!-- end of Gene form -->
+            <div class="col-lg-6 col-md-6 col-sm-12"> <!-- Transcript form -->
+              <form>
+                <div class="form-group">
+                  <label for="transcript_form">Search for a Transcript</label>
+                  <input type="email" class="form-control" id="transcript_form" placeholder="Enter a transcript name">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div><!-- end of Transcript form -->
+          </div><!-- end of search row -->
+        </div><!-- end of container col -->
+      </div><!-- end of container row -->
+    </div><!-- end of the main container -->
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
