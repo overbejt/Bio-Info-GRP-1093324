@@ -116,7 +116,7 @@ if gene_name is not None:
             print('</tr>')
 
     finally:
-        pass
+        conn.close()
     print('</tbody>')
     print('</table>')
     print('</div>')
@@ -149,10 +149,10 @@ if trans_name is not None:
                 # print('<tr>')
                 # Avoid printing duplicates
                 if count < 2:
-                # print('<td>{0}</td>'.format(trans_name))
-                # print('<td>{0}</td>'.format(row['START_INDEX']))
-                # print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
-                # print('</tr>')
+                    # print('<td>{0}</td>'.format(trans_name))
+                    # print('<td>{0}</td>'.format(row['START_INDEX']))
+                    # print('<td>{0}</td>'.format(row['TRANSCRIPT_NAME']))
+                    # print('</tr>')
                 count += 1
 
     finally:
