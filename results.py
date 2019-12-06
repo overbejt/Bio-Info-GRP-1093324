@@ -85,7 +85,7 @@ print('<h1>This is where the search results will end up</h1>')
 print('</div><!-- end of the header row -->')
 
 # Print out table for gene only if user entered a gene name
-# if gene_name not None:
+# if gene_name is not None:
 #     print('<div class="row pt-5"><!-- Gene table row -->')
 #     print('<a name="genes"><h2>Genes</h2></a>')
 #     print('<table class="table table-striped">')
