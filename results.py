@@ -163,7 +163,7 @@ if trans_name is not None:
             print('<td>{0}</td>'.format(introns['intron_cnt']))
             print('</tr>')
 
-            # Loop and print the table
+            # Loop and print the rest of the table
             count = 1
             for row in start_end:
                 if count > 2:
