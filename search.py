@@ -145,7 +145,7 @@ finally:
 print('</tbody>')
 print('</table>')
 print('</div>')
-print('<div class="row pt-5 pb-5"><!-- search row -->')
+print('<div class="row pt-3 pb-5"><!-- search row -->')
 print('<div class="col-lg-6 col-md-6 col-sm-12"> <!-- Gene form -->')
 print('<form>')
 print('<div class="form-group">')
