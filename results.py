@@ -138,13 +138,13 @@ if trans_name is not None:
     try:
         # Get the count of exons for the transcript
         with conn.cursor() as cursor:
-            sql = 'SELECT COUNT(*) FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s AND FEATURE="exon"'
+            sql = 'SELECT COUNT(*) AS exon_cnt FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s AND FEATURE="exon"'
             cursor.execute(sql, trans_name)
             exons = cursor.fetchone()
 
         # Get the count of introns for the transcript
         with conn.cursor() as cursor:
-            sql = 'SELECT COUNT(*) FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s AND FEATURE="intron"'
+            sql = 'SELECT COUNT(*) AS intron_cnt FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s AND FEATURE="intron"'
             cursor.execute(sql, trans_name)
             introns = cursor.fetchone()
 
@@ -153,16 +153,28 @@ if trans_name is not None:
             sql = 'SELECT DISTINCT START_INDEX, END_INDEX FROM overbejt.geneII WHERE TRANSCRIPT_NAME=%s'
             cursor.execute(sql, trans_name)
             start_end = cursor.fetchall()
+
+            # Print the first row
+            print('<tr>')
+            print('<td>{0}</td>'.format(trans_name))
+            print('<td>{0}</td>'.format(start_end[0]['START_INDEX']))
+            print('<td>{0}</td>'.format(start_end[0]['END_INDEX']))
+            print('<td>{0}</td>'.format(exons['exon_cnt']))
+            print('<td>{0}</td>'.format(introns['intron_cnt']))
+            print('</tr>')
+
             # Loop and print the table
-
-            print('<tr><td>{0}</td></tr>'.format(start_end[0]['START_INDEX']))
-
+            count = 1
             for row in start_end:
-                print('<tr>')
-                print('<td>{0}</td>'.format(trans_name))
-                print('<td>{0}</td>'.format(row['START_INDEX']))
-                print('<td>{0}</td>'.format(row['END_INDEX']))
-                print('</tr>')
+                if count > 2:
+                    print('<tr>')
+                    print('<td></td>')
+                    print('<td>{0}</td>'.format(row['START_INDEX']))
+                    print('<td>{0}</td>'.format(row['END_INDEX']))
+                    print('<td></td>')
+                    print('<td></td>')
+                    print('</tr>')
+                count += 1
 
     finally:
         conn.close()
