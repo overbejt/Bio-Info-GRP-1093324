@@ -106,13 +106,17 @@ if gene_name is not None:
             cursor.execute(sql, gene_name)
             res = cursor.fetchone()
 
-            print('<tr>')
-            print('<td>{0}</td>'.format(gene_name))
-            print('<td>{0}</td>'.format(res['START_INDEX']))
-            print('<td>{0}</td>'.format(res['END_INDEX']))
-            print('<td>{0}</td>'.format(res['STRAND']))
-            print('<td>{0}</td>'.format(res['GENE_BIOTYPE']))
-            print('</tr>')
+            # Print the data only if there is some to print
+            if res is not None:
+                print('<tr>')
+                print('<td>{0}</td>'.format(gene_name))
+                print('<td>{0}</td>'.format(res['START_INDEX']))
+                print('<td>{0}</td>'.format(res['END_INDEX']))
+                print('<td>{0}</td>'.format(res['STRAND']))
+                print('<td>{0}</td>'.format(res['GENE_BIOTYPE']))
+                print('</tr>')
+            else:
+                print('<tr><td>Gene {0} does not exist</td></tr>'.format(gene_name))
 
     finally:
         conn.close()
@@ -154,27 +158,31 @@ if trans_name is not None:
             cursor.execute(sql, trans_name)
             start_end = cursor.fetchall()
 
-            # Print the first row
-            print('<tr>')
-            print('<td>{0}</td>'.format(trans_name))
-            print('<td>{0}</td>'.format(start_end[0]['START_INDEX']))
-            print('<td>{0}</td>'.format(start_end[0]['END_INDEX']))
-            print('<td>{0}</td>'.format(exons['exon_cnt']))
-            print('<td>{0}</td>'.format(introns['intron_cnt']))
-            print('</tr>')
+            # Make sure there is something to actually print out
+            if exons is not None and introns is not None and start_end is not None:
+                # Print the first row
+                print('<tr>')
+                print('<td>{0}</td>'.format(trans_name))
+                print('<td>{0}</td>'.format(start_end[0]['START_INDEX']))
+                print('<td>{0}</td>'.format(start_end[0]['END_INDEX']))
+                print('<td>{0}</td>'.format(exons['exon_cnt']))
+                print('<td>{0}</td>'.format(introns['intron_cnt']))
+                print('</tr>')
 
-            # Loop and print the rest of the table
-            count = 1
-            for row in start_end:
-                if count > 2:
-                    print('<tr>')
-                    print('<td></td>')
-                    print('<td>{0}</td>'.format(row['START_INDEX']))
-                    print('<td>{0}</td>'.format(row['END_INDEX']))
-                    print('<td></td>')
-                    print('<td></td>')
-                    print('</tr>')
-                count += 1
+                # Loop and print the rest of the table
+                count = 1
+                for row in start_end:
+                    if count > 2:
+                        print('<tr>')
+                        print('<td></td>')
+                        print('<td>{0}</td>'.format(row['START_INDEX']))
+                        print('<td>{0}</td>'.format(row['END_INDEX']))
+                        print('<td></td>')
+                        print('<td></td>')
+                        print('</tr>')
+                    count += 1
+            else:
+                print('<tr><td>Transcript {0} does not exist</td></tr>'.format(trans_name))
 
     finally:
         conn.close()
