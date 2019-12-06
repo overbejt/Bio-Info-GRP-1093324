@@ -157,12 +157,12 @@ if trans_name is not None:
 
             print('<tr><td>{0}</td></tr>'.format(start_end[0]['START_INDEX']))
 
-            # for row in start_end:
-            #     print('<tr>')
-            #     print('<td>{0}</td>'.format(trans_name))
-            #     print('<td>{0}</td>'.format(row['START_INDEX']))
-            #     print('<td>{0}</td>'.format(row['END_INDEX']))
-            #     print('</tr>')
+            for row in start_end:
+                print('<tr>')
+                print('<td>{0}</td>'.format(trans_name))
+                print('<td>{0}</td>'.format(row['START_INDEX']))
+                print('<td>{0}</td>'.format(row['END_INDEX']))
+                print('</tr>')
 
     finally:
         conn.close()
